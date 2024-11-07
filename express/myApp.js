@@ -26,4 +26,9 @@ app.get('/json', (req, res) => {
     res.json(data)
 })
 
+app.get('/:word/echo', (req, res) => {
+    const word = req.params.word
+    res.send({echo: word})
+})
+
 app.get('/now', timeMiddleware, timeRes)
