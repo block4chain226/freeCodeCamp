@@ -6,7 +6,6 @@ const {getUser} = require('./handlers/users/user')
 require('dotenv').config()
 let app = express();
 
-
 app.use('/public', express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(logger)
@@ -14,7 +13,6 @@ app.use(logger)
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
-
 
 app.get('/json', (req, res) => {
     const messageStyle = process.env.MESSAGE_STYLE
@@ -30,7 +28,7 @@ app.get('/:word/echo', (req, res) => {
     res.send({echo: word})
 })
 
-app.get('/name', getUser).post(getUser)
+app.get('/name', getUser).post('/name', getUser)
 
 
 module.exports = app;
